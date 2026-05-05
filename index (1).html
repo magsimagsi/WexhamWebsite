@@ -1,0 +1,2127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wexham Medical Resources, Inc.</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0a1628;
+    --navy-mid: #142240;
+    --blue: #1a3a6e;
+    --accent: #c8960c;
+    --accent-light: #e8b535;
+    --white: #f8f6f1;
+    --offwhite: #f0ede6;
+    --gray: #8a8a8a;
+    --light-gray: #e8e4dc;
+    --text: #1a1a1a;
+    --red: #c0392b;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--white);
+    color: var(--text);
+    min-height: 100vh;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: var(--navy);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 48px;
+    height: 72px;
+    border-bottom: 1px solid rgba(200,150,12,0.3);
+  }
+
+  .nav-logo {
+    display: flex; align-items: center; gap: 12px; cursor: pointer;
+    text-decoration: none;
+  }
+  .nav-logo-icon {
+    width: 40px; height: 40px;
+    background: var(--accent);
+    border-radius: 4px;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px; font-weight: 600;
+    color: var(--navy);
+  }
+  .nav-logo-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px; font-weight: 600;
+    color: var(--white);
+    letter-spacing: 0.08em;
+  }
+  .nav-logo-sub {
+    font-size: 10px; font-weight: 300;
+    color: var(--accent);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    display: block;
+    line-height: 1;
+  }
+
+  .nav-links {
+    display: flex; gap: 40px; list-style: none;
+  }
+  .nav-links a {
+    color: rgba(248,246,241,0.7);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+    cursor: pointer;
+  }
+  .nav-links a:hover, .nav-links a.active {
+    color: var(--accent);
+  }
+
+  .nav-cta {
+    background: var(--accent);
+    color: var(--navy) !important;
+    padding: 8px 20px;
+    border-radius: 2px;
+    font-weight: 600 !important;
+  }
+  .nav-cta:hover { background: var(--accent-light) !important; color: var(--navy) !important; }
+
+  /* ── PAGES ── */
+  .page { display: none; padding-top: 72px; min-height: 100vh; }
+  .page.active { display: block; }
+
+  /* ── HOME PAGE ── */
+  .hero {
+    background: var(--navy);
+    min-height: 90vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    overflow: hidden;
+    position: relative;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 30% 50%, rgba(26,58,110,0.8) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-left {
+    padding: 80px 64px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative; z-index: 2;
+  }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(200,150,12,0.15);
+    border: 1px solid rgba(200,150,12,0.3);
+    padding: 6px 16px;
+    border-radius: 2px;
+    margin-bottom: 32px;
+    width: fit-content;
+  }
+  .hero-badge span {
+    font-size: 11px; letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 500;
+  }
+  .hero-badge::before {
+    content: '';
+    width: 6px; height: 6px;
+    background: var(--accent);
+    border-radius: 50%;
+  }
+  .hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 64px; font-weight: 300;
+    color: var(--white);
+    line-height: 1.05;
+    margin-bottom: 24px;
+  }
+  .hero h1 em {
+    font-style: italic;
+    color: var(--accent);
+  }
+  .hero p {
+    color: rgba(248,246,241,0.65);
+    font-size: 16px; line-height: 1.7;
+    max-width: 420px;
+    margin-bottom: 48px;
+  }
+  .hero-btns {
+    display: flex; gap: 16px;
+  }
+  .btn-primary {
+    background: var(--accent);
+    color: var(--navy);
+    padding: 14px 32px;
+    font-size: 13px; font-weight: 600;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    border: none; cursor: pointer;
+    border-radius: 2px;
+    transition: background 0.2s, transform 0.2s;
+  }
+  .btn-primary:hover { background: var(--accent-light); transform: translateY(-1px); }
+  .btn-secondary {
+    background: transparent;
+    color: var(--white);
+    padding: 14px 32px;
+    font-size: 13px; font-weight: 500;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    border: 1px solid rgba(248,246,241,0.3);
+    cursor: pointer;
+    border-radius: 2px;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .btn-secondary:hover { border-color: var(--accent); background: rgba(200,150,12,0.08); }
+
+  .hero-right {
+    position: relative; z-index: 2;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    width: 100%; height: 100%;
+  }
+  .hero-grid-item {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(200,150,12,0.1);
+    padding: 40px 32px;
+    display: flex; flex-direction: column; justify-content: flex-end;
+    min-height: 280px;
+    position: relative; overflow: hidden;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+  .hero-grid-item:hover { background: rgba(200,150,12,0.05); }
+  .hero-grid-item::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--accent), transparent);
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  .hero-grid-item:hover::before { opacity: 1; }
+  .hgi-number {
+    font-family: 'DM Mono', monospace;
+    font-size: 48px;
+    color: rgba(200,150,12,0.2);
+    font-weight: 400;
+    position: absolute; top: 24px; right: 24px;
+  }
+  .hgi-tag {
+    font-size: 10px; letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 8px;
+  }
+  .hgi-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px; font-weight: 400;
+    color: var(--white);
+  }
+
+  /* STATS BAR */
+  .stats-bar {
+    background: var(--navy-mid);
+    border-top: 1px solid rgba(200,150,12,0.2);
+    border-bottom: 1px solid rgba(200,150,12,0.2);
+    display: flex;
+  }
+  .stat-item {
+    flex: 1;
+    padding: 32px 48px;
+    border-right: 1px solid rgba(200,150,12,0.1);
+    text-align: center;
+  }
+  .stat-item:last-child { border-right: none; }
+  .stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 48px; font-weight: 300;
+    color: var(--accent);
+    line-height: 1;
+  }
+  .stat-label {
+    font-size: 11px; letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(248,246,241,0.5);
+    margin-top: 8px;
+  }
+
+  /* CATEGORIES */
+  .section {
+    padding: 96px 64px;
+  }
+  .section-header {
+    margin-bottom: 56px;
+  }
+  .section-tag {
+    font-size: 11px; letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 500;
+    margin-bottom: 12px;
+  }
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 48px; font-weight: 300;
+    line-height: 1.1;
+    color: var(--navy);
+  }
+  .section-title em { font-style: italic; color: var(--accent); }
+
+  .categories-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--light-gray);
+    border: 1px solid var(--light-gray);
+  }
+  .cat-card {
+    background: var(--white);
+    padding: 48px 32px;
+    cursor: pointer;
+    transition: background 0.3s;
+    position: relative; overflow: hidden;
+  }
+  .cat-card:hover { background: var(--navy); }
+  .cat-card:hover .cat-name, .cat-card:hover .cat-desc { color: var(--white); }
+  .cat-card:hover .cat-icon { color: var(--accent); }
+  .cat-card:hover .cat-num { color: rgba(200,150,12,0.15); }
+  .cat-icon {
+    font-size: 32px; margin-bottom: 20px;
+    transition: color 0.3s;
+  }
+  .cat-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px; color: var(--light-gray);
+    position: absolute; top: 20px; right: 20px;
+    transition: color 0.3s;
+  }
+  .cat-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px; font-weight: 400;
+    color: var(--navy);
+    margin-bottom: 12px;
+    transition: color 0.3s;
+    line-height: 1.2;
+  }
+  .cat-desc {
+    font-size: 13px; line-height: 1.6;
+    color: var(--gray);
+    transition: color 0.3s;
+  }
+
+  /* FEATURED PRODUCTS */
+  .products-strip {
+    background: var(--offwhite);
+    padding: 96px 64px;
+  }
+  .products-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  .prod-card {
+    background: var(--white);
+    border: 1px solid var(--light-gray);
+    padding: 32px;
+    cursor: pointer;
+    transition: box-shadow 0.3s, transform 0.3s;
+    position: relative;
+  }
+  .prod-card:hover {
+    box-shadow: 0 16px 48px rgba(10,22,40,0.12);
+    transform: translateY(-4px);
+  }
+  .prod-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--accent);
+    transform: scaleX(0);
+    transition: transform 0.3s;
+    transform-origin: left;
+  }
+  .prod-card:hover::after { transform: scaleX(1); }
+  .prod-cat-tag {
+    font-size: 10px; letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 500;
+    margin-bottom: 16px;
+  }
+  .prod-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px; font-weight: 400;
+    color: var(--navy);
+    margin-bottom: 12px;
+  }
+  .prod-desc {
+    font-size: 13px; line-height: 1.65;
+    color: var(--gray);
+    margin-bottom: 24px;
+  }
+  .prod-link {
+    font-size: 12px; font-weight: 600;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--navy);
+    border-bottom: 1px solid var(--navy);
+    padding-bottom: 2px;
+    cursor: pointer;
+    background: none; border-left: none; border-top: none; border-right: none;
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .prod-link:hover { color: var(--accent); border-color: var(--accent); }
+
+  /* BRANDS STRIP */
+  .brands-strip {
+    background: var(--navy);
+    padding: 64px;
+    text-align: center;
+  }
+  .brands-strip h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 36px; font-weight: 300;
+    color: var(--white);
+    margin-bottom: 48px;
+  }
+  .brands-logos {
+    display: flex; gap: 0; justify-content: center; flex-wrap: wrap;
+  }
+  .brand-pill {
+    padding: 16px 32px;
+    border: 1px solid rgba(200,150,12,0.2);
+    font-family: 'DM Mono', monospace;
+    font-size: 13px; letter-spacing: 0.15em;
+    color: rgba(248,246,241,0.5);
+    cursor: pointer;
+    transition: all 0.2s;
+    margin: -1px;
+  }
+  .brand-pill:hover {
+    background: rgba(200,150,12,0.1);
+    color: var(--accent);
+    border-color: var(--accent);
+  }
+
+  /* CONTACT STRIP */
+  .contact-strip {
+    background: var(--accent);
+    padding: 64px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .contact-strip h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 40px; font-weight: 300;
+    color: var(--navy);
+  }
+  .contact-strip p {
+    font-size: 15px; color: rgba(10,22,40,0.7);
+    margin-top: 8px;
+  }
+
+  /* ── PRODUCTS PAGE ── */
+  .page-hero {
+    background: var(--navy);
+    padding: 80px 64px;
+    position: relative; overflow: hidden;
+  }
+  .page-hero::after {
+    content: '';
+    position: absolute; top: -100px; right: -100px;
+    width: 400px; height: 400px;
+    border: 1px solid rgba(200,150,12,0.1);
+    border-radius: 50%;
+  }
+  .page-hero::before {
+    content: '';
+    position: absolute; top: -50px; right: -50px;
+    width: 300px; height: 300px;
+    border: 1px solid rgba(200,150,12,0.08);
+    border-radius: 50%;
+  }
+  .page-hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 56px; font-weight: 300;
+    color: var(--white);
+    margin-bottom: 16px;
+    position: relative; z-index: 1;
+  }
+  .page-hero p {
+    color: rgba(248,246,241,0.6);
+    font-size: 15px;
+    position: relative; z-index: 1;
+    max-width: 600px;
+  }
+  .breadcrumb {
+    font-size: 12px; letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 24px;
+    position: relative; z-index: 1;
+  }
+
+  .products-layout {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    min-height: 80vh;
+  }
+  .sidebar {
+    background: var(--navy-mid);
+    padding: 40px 32px;
+    border-right: 1px solid rgba(200,150,12,0.1);
+  }
+  .sidebar-title {
+    font-size: 10px; letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 24px;
+  }
+  .sidebar-cat {
+    margin-bottom: 8px;
+  }
+  .sidebar-cat-header {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 10px 0;
+    cursor: pointer;
+    border-bottom: 1px solid rgba(200,150,12,0.08);
+    color: rgba(248,246,241,0.8);
+    font-size: 13px; font-weight: 500;
+    transition: color 0.2s;
+  }
+  .sidebar-cat-header:hover, .sidebar-cat-header.active { color: var(--accent); }
+  .sidebar-subcat {
+    padding: 8px 0 8px 16px;
+    font-size: 12px;
+    color: rgba(248,246,241,0.5);
+    cursor: pointer;
+    transition: color 0.2s;
+    display: block;
+  }
+  .sidebar-subcat:hover, .sidebar-subcat.active { color: var(--accent-light); }
+  .sidebar-subitems { display: none; }
+  .sidebar-subitems.open { display: block; }
+
+  .products-main { padding: 48px; background: var(--white); }
+  .products-toolbar {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 40px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--light-gray);
+  }
+  .products-count {
+    font-size: 13px; color: var(--gray);
+  }
+  .products-count strong { color: var(--navy); font-weight: 600; }
+
+  .all-products-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  /* ── PRODUCT DETAIL PAGE ── */
+  .product-detail {
+    padding: 64px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    min-height: 80vh;
+    align-items: start;
+  }
+  .product-image-area {
+    background: var(--offwhite);
+    border: 1px solid var(--light-gray);
+    padding: 80px;
+    display: flex; align-items: center; justify-content: center;
+    min-height: 400px;
+    position: relative;
+  }
+  .product-placeholder {
+    width: 200px; height: 200px;
+    background: linear-gradient(135deg, var(--light-gray), var(--offwhite));
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 64px;
+  }
+  .product-info { padding-top: 16px; }
+  .product-info .breadcrumb { color: var(--gray); }
+  .product-info h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 48px; font-weight: 300;
+    color: var(--navy);
+    margin-bottom: 8px;
+  }
+  .product-subtitle {
+    font-size: 15px; color: var(--gray);
+    margin-bottom: 32px;
+    font-style: italic;
+  }
+  .product-divider {
+    width: 48px; height: 2px;
+    background: var(--accent);
+    margin-bottom: 32px;
+  }
+  .product-desc {
+    font-size: 15px; line-height: 1.75;
+    color: #444;
+    margin-bottom: 40px;
+  }
+  .product-specs {
+    background: var(--offwhite);
+    padding: 32px;
+    margin-bottom: 40px;
+    border-left: 3px solid var(--accent);
+  }
+  .product-specs h4 {
+    font-size: 11px; letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 20px;
+  }
+  .spec-row {
+    display: flex; gap: 16px;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    font-size: 13px;
+  }
+  .spec-row:last-child { border-bottom: none; }
+  .spec-label { color: var(--gray); min-width: 140px; font-weight: 500; }
+  .spec-value { color: var(--text); }
+  .product-actions { display: flex; gap: 16px; }
+
+  /* ── BRANDS PAGE ── */
+  .brands-intro {
+    background: var(--offwhite);
+    padding: 96px 64px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+  .brands-intro h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 48px; font-weight: 300;
+    color: var(--navy);
+    line-height: 1.1;
+  }
+  .brands-intro p {
+    font-size: 15px; line-height: 1.75;
+    color: var(--gray);
+  }
+  .brands-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--light-gray);
+    margin: 0 64px 96px;
+  }
+  .brand-card {
+    background: var(--white);
+    padding: 48px 40px;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+  .brand-card:hover { background: var(--navy); }
+  .brand-card:hover .brand-card-name, .brand-card:hover .brand-card-desc { color: var(--white); }
+  .brand-card:hover .brand-card-tag { color: var(--accent); }
+  .brand-card-tag {
+    font-size: 10px; letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 16px;
+    transition: color 0.3s;
+  }
+  .brand-card-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 36px; font-weight: 300;
+    color: var(--navy);
+    margin-bottom: 16px;
+    transition: color 0.3s;
+  }
+  .brand-card-desc {
+    font-size: 13px; line-height: 1.65;
+    color: var(--gray);
+    transition: color 0.3s;
+  }
+  .lotus-section {
+    background: var(--navy);
+    padding: 64px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: center;
+  }
+  .lotus-section h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 42px; font-weight: 300;
+    color: var(--white);
+    margin-bottom: 16px;
+  }
+  .lotus-section p {
+    font-size: 15px; line-height: 1.75;
+    color: rgba(248,246,241,0.65);
+  }
+  .lotus-img-area {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(200,150,12,0.2);
+    padding: 48px;
+    text-align: center;
+    font-size: 64px;
+  }
+
+  /* ── CAREERS PAGE ── */
+  .careers-hero-content {
+    max-width: 640px;
+  }
+  .careers-body {
+    padding: 96px 64px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+  }
+  .careers-why h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 42px; font-weight: 300;
+    color: var(--navy);
+    margin-bottom: 32px;
+  }
+  .value-item {
+    padding: 24px 0;
+    border-bottom: 1px solid var(--light-gray);
+    display: flex; gap: 20px;
+  }
+  .value-icon {
+    width: 40px; height: 40px;
+    background: rgba(200,150,12,0.1);
+    border-radius: 2px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+  .value-text h4 {
+    font-size: 15px; font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 6px;
+  }
+  .value-text p {
+    font-size: 13px; line-height: 1.65;
+    color: var(--gray);
+  }
+  .job-listings h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 42px; font-weight: 300;
+    color: var(--navy);
+    margin-bottom: 32px;
+  }
+  .job-card {
+    border: 1px solid var(--light-gray);
+    padding: 32px;
+    margin-bottom: 16px;
+    position: relative;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    cursor: pointer;
+  }
+  .job-card:hover {
+    border-color: var(--accent);
+    box-shadow: 4px 4px 0 var(--accent);
+  }
+  .job-dept {
+    font-size: 10px; letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 8px;
+  }
+  .job-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px; font-weight: 400;
+    color: var(--navy);
+    margin-bottom: 8px;
+  }
+  .job-meta {
+    display: flex; gap: 16px;
+    font-size: 12px; color: var(--gray);
+  }
+  .job-meta span {
+    display: flex; align-items: center; gap: 4px;
+  }
+  .job-type-badge {
+    position: absolute; top: 32px; right: 32px;
+    background: var(--offwhite);
+    padding: 4px 12px;
+    border-radius: 2px;
+    font-size: 11px; color: var(--navy);
+    font-weight: 500;
+  }
+  .careers-cta {
+    background: var(--navy-mid);
+    padding: 64px;
+    text-align: center;
+    margin-top: 0;
+  }
+  .careers-cta h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 40px; font-weight: 300;
+    color: var(--white);
+    margin-bottom: 16px;
+  }
+  .careers-cta p {
+    color: rgba(248,246,241,0.6);
+    margin-bottom: 32px;
+  }
+
+  /* ── CONTACT PAGE ── */
+  .contact-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 80vh;
+  }
+  .contact-info-side {
+    background: var(--navy);
+    padding: 80px 64px;
+  }
+  .contact-info-side h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 42px; font-weight: 300;
+    color: var(--white);
+    margin-bottom: 16px;
+  }
+  .contact-info-side > p {
+    color: rgba(248,246,241,0.6);
+    margin-bottom: 56px;
+    line-height: 1.7;
+  }
+  .contact-detail {
+    margin-bottom: 40px;
+    display: flex; gap: 20px;
+  }
+  .contact-detail-icon {
+    width: 44px; height: 44px;
+    background: rgba(200,150,12,0.12);
+    border: 1px solid rgba(200,150,12,0.25);
+    border-radius: 2px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+  .contact-detail-text h4 {
+    font-size: 11px; letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 6px;
+  }
+  .contact-detail-text p {
+    font-size: 15px; color: var(--white);
+    line-height: 1.5;
+  }
+  .social-links {
+    display: flex; gap: 12px; margin-top: 56px;
+  }
+  .social-link {
+    width: 44px; height: 44px;
+    border: 1px solid rgba(200,150,12,0.25);
+    border-radius: 2px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  .social-link:hover { background: rgba(200,150,12,0.15); }
+
+  .contact-form-side {
+    padding: 80px 64px;
+    background: var(--white);
+  }
+  .contact-form-side h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 36px; font-weight: 300;
+    color: var(--navy);
+    margin-bottom: 40px;
+  }
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  .form-group {
+    margin-bottom: 24px;
+  }
+  .form-group label {
+    display: block;
+    font-size: 11px; letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gray);
+    margin-bottom: 8px;
+    font-weight: 500;
+  }
+  .form-group input,
+  .form-group textarea,
+  .form-group select {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid var(--light-gray);
+    background: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    color: var(--text);
+    outline: none;
+    border-radius: 2px;
+    transition: border-color 0.2s;
+  }
+  .form-group input:focus,
+  .form-group textarea:focus,
+  .form-group select:focus {
+    border-color: var(--accent);
+  }
+  .form-group textarea { resize: vertical; min-height: 120px; }
+  .form-note {
+    font-size: 12px; color: var(--gray);
+    margin-bottom: 24px;
+    line-height: 1.6;
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--navy);
+    padding: 64px;
+    border-top: 1px solid rgba(200,150,12,0.15);
+  }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 48px;
+    margin-bottom: 48px;
+  }
+  .footer-brand p {
+    color: rgba(248,246,241,0.5);
+    font-size: 13px; line-height: 1.7;
+    margin-top: 16px;
+    max-width: 280px;
+  }
+  .footer-col h4 {
+    font-size: 11px; letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 20px;
+  }
+  .footer-col ul { list-style: none; }
+  .footer-col li {
+    margin-bottom: 10px;
+  }
+  .footer-col a {
+    color: rgba(248,246,241,0.55);
+    text-decoration: none;
+    font-size: 13px;
+    cursor: pointer;
+    transition: color 0.2s;
+  }
+  .footer-col a:hover { color: var(--accent); }
+  .footer-bottom {
+    border-top: 1px solid rgba(200,150,12,0.1);
+    padding-top: 32px;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .footer-bottom p {
+    font-size: 12px; color: rgba(248,246,241,0.3);
+  }
+
+  /* ABOUT (CUSTOMER CARE) PAGE */
+  .about-layout { max-width: 900px; margin: 0 auto; padding: 80px 64px; }
+  .about-layout h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 42px; font-weight: 300;
+    color: var(--navy);
+    margin-bottom: 32px;
+  }
+  .about-layout p {
+    font-size: 15px; line-height: 1.85;
+    color: #555;
+    margin-bottom: 24px;
+  }
+  .about-highlight {
+    background: var(--navy);
+    color: var(--white);
+    padding: 48px 64px;
+    margin: 48px 0;
+  }
+  .about-highlight blockquote {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 32px; font-weight: 300;
+    font-style: italic;
+    line-height: 1.4;
+    color: var(--white);
+  }
+  .about-highlight blockquote::before {
+    content: '"';
+    font-size: 80px; line-height: 0.6;
+    color: var(--accent);
+    display: block;
+    margin-bottom: 16px;
+  }
+
+  /* INQUIRY MODAL */
+  .modal-overlay {
+    display: none;
+    position: fixed; inset: 0;
+    background: rgba(10,22,40,0.75);
+    z-index: 200;
+    align-items: center; justify-content: center;
+  }
+  .modal-overlay.open { display: flex; }
+  .modal {
+    background: var(--white);
+    width: 560px;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+  }
+  .modal-header {
+    background: var(--navy);
+    padding: 32px 40px;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .modal-header h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px; font-weight: 300;
+    color: var(--white);
+  }
+  .modal-close {
+    background: none; border: none;
+    color: rgba(248,246,241,0.5);
+    font-size: 24px; cursor: pointer;
+    padding: 0;
+    transition: color 0.2s;
+  }
+  .modal-close:hover { color: var(--accent); }
+  .modal-body { padding: 40px; }
+
+  /* BACK BUTTON */
+  .back-btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 12px; font-weight: 500;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: rgba(248,246,241,0.6);
+    background: none; border: none;
+    cursor: pointer;
+    margin-bottom: 24px;
+    transition: color 0.2s;
+    position: relative; z-index: 1;
+  }
+  .back-btn:hover { color: var(--accent); }
+
+  /* NOTIFICATION */
+  .toast {
+    position: fixed; bottom: 32px; right: 32px;
+    background: var(--navy);
+    color: var(--white);
+    padding: 16px 24px;
+    border-left: 4px solid var(--accent);
+    font-size: 14px;
+    z-index: 300;
+    display: none;
+    animation: slideUp 0.3s ease;
+    max-width: 360px;
+  }
+  @keyframes slideUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── INQUIRY FORM PAGE ── */
+  .inquiry-form-page {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 80px 64px;
+  }
+  .inquiry-form-page h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 42px; font-weight: 300;
+    color: var(--navy);
+    margin-bottom: 8px;
+  }
+  .inquiry-form-page p.lead {
+    font-size: 15px; color: var(--gray);
+    margin-bottom: 48px;
+  }
+
+  /* RESPONSIVE HELPERS */
+  @media (max-width: 900px) {
+    nav { padding: 0 24px; }
+    .hero { grid-template-columns: 1fr; }
+    .hero-right { display: none; }
+    .section { padding: 64px 24px; }
+    .categories-grid { grid-template-columns: 1fr 1fr; }
+    .products-grid, .all-products-grid { grid-template-columns: 1fr 1fr; }
+    .products-layout { grid-template-columns: 1fr; }
+    .sidebar { display: none; }
+    .contact-layout { grid-template-columns: 1fr; }
+    .brands-grid { grid-template-columns: 1fr 1fr; }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+    .careers-body { grid-template-columns: 1fr; }
+    .brands-intro { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" onclick="navigate('home')">
+    <div class="nav-logo-icon">W</div>
+    <div>
+      <span class="nav-logo-text">WEXHAM</span>
+      <span class="nav-logo-sub">Medical Resources</span>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a onclick="navigate('home')" data-page="home">Home</a></li>
+    <li><a onclick="navigate('products')" data-page="products">Products</a></li>
+    <li><a onclick="navigate('brands')" data-page="brands">Brands</a></li>
+    <li><a onclick="navigate('careers')" data-page="careers">Careers</a></li>
+    <li><a onclick="navigate('contact')" data-page="contact" class="nav-cta">Contact Us</a></li>
+  </ul>
+</nav>
+
+<!-- ══════════════════════════════════════════
+     HOME PAGE
+══════════════════════════════════════════ -->
+<div class="page active" id="page-home">
+  <section class="hero">
+    <div class="hero-left">
+      <div class="hero-badge"><span>Philippines' Trusted Surgical Supplier</span></div>
+      <h1>Advanced <em>Surgical</em><br>Resources for<br>Filipino Healthcare</h1>
+      <p>Wexham Medical Resources, Inc. delivers world-class surgical products — from sutures and meshes to staplers and clip appliers — to hospitals and clinics across the Philippines.</p>
+      <div class="hero-btns">
+        <button class="btn-primary" onclick="navigate('products')">Browse Products</button>
+        <button class="btn-secondary" onclick="navigate('contact')">Get in Touch</button>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="hero-grid">
+        <div class="hero-grid-item" onclick="navigate('products')">
+          <span class="hgi-number">01</span>
+          <div class="hgi-tag">Category</div>
+          <div class="hgi-title">Absorbable Sutures</div>
+        </div>
+        <div class="hero-grid-item" onclick="navigate('products')">
+          <span class="hgi-number">02</span>
+          <div class="hgi-tag">Category</div>
+          <div class="hgi-title">Surgical Mesh</div>
+        </div>
+        <div class="hero-grid-item" onclick="navigate('products')">
+          <span class="hgi-number">03</span>
+          <div class="hgi-tag">Category</div>
+          <div class="hgi-title">Clip Appliers</div>
+        </div>
+        <div class="hero-grid-item" onclick="navigate('products')">
+          <span class="hgi-number">04</span>
+          <div class="hgi-tag">Category</div>
+          <div class="hgi-title">Surgical Staplers</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="stats-bar">
+    <div class="stat-item">
+      <div class="stat-num">20+</div>
+      <div class="stat-label">Product Lines</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">7</div>
+      <div class="stat-label">Product Categories</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">PH</div>
+      <div class="stat-label">Nationwide Coverage</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">ISO</div>
+      <div class="stat-label">Certified Products</div>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="section-header">
+      <div class="section-tag">Our Portfolio</div>
+      <h2 class="section-title">Product <em>Categories</em></h2>
+    </div>
+    <div class="categories-grid">
+      <div class="cat-card" onclick="navigate('products')">
+        <span class="cat-num">01</span>
+        <div class="cat-icon">🧵</div>
+        <div class="cat-name">Absorbable Sutures</div>
+        <div class="cat-desc">Full range of monofilament and braided sutures with varying wound support and absorption profiles.</div>
+      </div>
+      <div class="cat-card" onclick="navigate('products')">
+        <span class="cat-num">02</span>
+        <div class="cat-icon">🔗</div>
+        <div class="cat-name">Non-Absorbable Sutures</div>
+        <div class="cat-desc">Monofilament and braided sutures for longer-term tissue approximation in diverse surgical applications.</div>
+      </div>
+      <div class="cat-card" onclick="navigate('products')">
+        <span class="cat-num">03</span>
+        <div class="cat-icon">🏥</div>
+        <div class="cat-name">Surgical Mesh</div>
+        <div class="cat-desc">Synthetic reinforcement material for hernia and other soft-tissue repairs, available in multiple configurations.</div>
+      </div>
+      <div class="cat-card" onclick="navigate('products')">
+        <span class="cat-num">04</span>
+        <div class="cat-icon">🔬</div>
+        <div class="cat-name">Bladeless Trocar</div>
+        <div class="cat-desc">Single-use instrument for minimally invasive surgery, puncturing the abdominal wall for laparoscopic procedures.</div>
+      </div>
+      <div class="cat-card" onclick="navigate('products')">
+        <span class="cat-num">05</span>
+        <div class="cat-icon">⚙️</div>
+        <div class="cat-name">Surgical Staplers</div>
+        <div class="cat-desc">Surgical stapling devices for better speed, accuracy and efficient wound closure in various procedures.</div>
+      </div>
+      <div class="cat-card" onclick="navigate('products')">
+        <span class="cat-num">06</span>
+        <div class="cat-icon">🩸</div>
+        <div class="cat-name">Hemostats</div>
+        <div class="cat-desc">For better control of blood flow during surgical procedures. Oxidized regenerated cellulose formulations.</div>
+      </div>
+      <div class="cat-card" onclick="navigate('products')">
+        <span class="cat-num">07</span>
+        <div class="cat-icon">📎</div>
+        <div class="cat-name">Clips & Appliers</div>
+        <div class="cat-desc">Reusable titanium clip appliers for laparoscopic or open surgeries, compatible with HEMOSEC clips.</div>
+      </div>
+      <div class="cat-card" onclick="navigate('contact')" style="background: var(--navy);">
+        <span class="cat-num" style="color: rgba(200,150,12,0.3);">→</span>
+        <div class="cat-icon">📞</div>
+        <div class="cat-name" style="color: var(--white);">Can't find what you need?</div>
+        <div class="cat-desc" style="color: rgba(248,246,241,0.6);">Contact our team and we'll help you find the right product for your procedure.</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="products-strip">
+    <div class="section-header">
+      <div class="section-tag">Featured Products</div>
+      <h2 class="section-title">Our <em>Flagship</em> Lines</h2>
+    </div>
+    <div class="products-grid">
+      <div class="prod-card" onclick="navigate('product-solus910')">
+        <div class="prod-cat-tag">Absorbable Sutures</div>
+        <div class="prod-name">SOLUS 910</div>
+        <div class="prod-desc">Braided Coated Poly(Glycolide-co-L-lactide) [Polyglactin-910]. Superior knot security and tensile strength for demanding surgical applications.</div>
+        <button class="prod-link">View Details</button>
+      </div>
+      <div class="prod-card" onclick="navigate('product-hemolus')">
+        <div class="prod-cat-tag">Hemostats</div>
+        <div class="prod-name">HEMOLUS Absorbable Hemostat</div>
+        <div class="prod-desc">Oxidized Regenerated Cellulose hemostat providing effective hemostasis, fully absorbable with excellent handling characteristics.</div>
+        <button class="prod-link">View Details</button>
+      </div>
+      <div class="prod-card" onclick="navigate('product-prolus-mesh')">
+        <div class="prod-cat-tag">Surgical Mesh</div>
+        <div class="prod-name">PROLUS Mesh</div>
+        <div class="prod-desc">Sturdy polypropylene mesh prosthesis designed to reinforce the abdominal wall via celioscopy or laparotomy procedures.</div>
+        <button class="prod-link">View Details</button>
+      </div>
+      <div class="prod-card" onclick="navigate('product-prolap')">
+        <div class="prod-cat-tag">Bladeless Trocar</div>
+        <div class="prod-name">PROLAP Bladeless Trocars</div>
+        <div class="prod-desc">Single-use instrument for minimally invasive surgery to puncture the abdominal wall while maintaining pneumoperitoneum.</div>
+        <button class="prod-link">View Details</button>
+      </div>
+      <div class="prod-card" onclick="navigate('product-hemosec')">
+        <div class="prod-cat-tag">Clips & Appliers</div>
+        <div class="prod-name">HEMOSEC Laparoscopic Applier</div>
+        <div class="prod-desc">Reusable instrument designed to deliver and close metallic ligating clips. Compatible with all standard HEMOSEC clips.</div>
+        <button class="prod-link">View Details</button>
+      </div>
+      <div class="prod-card" onclick="navigate('product-hernia-kit')">
+        <div class="prod-cat-tag">Surgical Mesh</div>
+        <div class="prod-name">HERNIA Kit</div>
+        <div class="prod-desc">An end-to-end economical package for carrying out inguinal hernia repair surgery with everything needed in one kit.</div>
+        <button class="prod-link">View Details</button>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:48px;">
+      <button class="btn-primary" onclick="navigate('products')">View All Products</button>
+    </div>
+  </section>
+
+  <div class="brands-strip">
+    <h3>Our Product Brands</h3>
+    <div class="brands-logos">
+      <div class="brand-pill" onclick="navigate('brands')">SOLUS 910</div>
+      <div class="brand-pill" onclick="navigate('brands')">HEMOLUS</div>
+      <div class="brand-pill" onclick="navigate('brands')">PROLUS</div>
+      <div class="brand-pill" onclick="navigate('brands')">HEMOSEC</div>
+      <div class="brand-pill" onclick="navigate('brands')">PROLAP</div>
+      <div class="brand-pill" onclick="navigate('brands')">PROSEC</div>
+      <div class="brand-pill" onclick="navigate('brands')">LOGUT</div>
+      <div class="brand-pill" onclick="navigate('brands')">SILKUS</div>
+      <div class="brand-pill" onclick="navigate('brands')">NYLUS</div>
+      <div class="brand-pill" onclick="navigate('brands')">MONOLUS</div>
+      <div class="brand-pill" onclick="navigate('brands')">MASS</div>
+    </div>
+  </div>
+
+  <div class="contact-strip">
+    <div>
+      <h2>Got Questions? We're Here.</h2>
+      <p>Call us at (+632) 8652 5755 · Unit 46, Parc House I, 227 EDSA, Mandaluyong</p>
+    </div>
+    <button class="btn-primary" onclick="navigate('contact')" style="background:var(--navy);color:var(--white);">Contact Us →</button>
+  </div>
+
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="nav-logo-icon" style="width:48px;height:48px;font-size:26px;">W</div>
+        <p>Wexham Medical Resources, Inc. — providing high-quality surgical products to Filipino healthcare institutions since establishment.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Products</h4>
+        <ul>
+          <li><a onclick="navigate('products')">Absorbable Sutures</a></li>
+          <li><a onclick="navigate('products')">Non-Absorbable Sutures</a></li>
+          <li><a onclick="navigate('products')">Surgical Mesh</a></li>
+          <li><a onclick="navigate('products')">Bladeless Trocar</a></li>
+          <li><a onclick="navigate('products')">Surgical Staplers</a></li>
+          <li><a onclick="navigate('products')">Hemostats</a></li>
+          <li><a onclick="navigate('products')">Clips & Appliers</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a onclick="navigate('about')">About Wexham</a></li>
+          <li><a onclick="navigate('brands')">Our Brands</a></li>
+          <li><a onclick="navigate('careers')">Careers</a></li>
+          <li><a onclick="navigate('contact')">Contact Us</a></li>
+          <li><a onclick="navigate('where-to-order')">Where to Order</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Customer Care</h4>
+        <ul>
+          <li><a onclick="navigate('about')">About Wexham Medical</a></li>
+          <li><a onclick="navigate('where-to-order')">Where to Order</a></li>
+          <li><a onclick="navigate('product-inquiry')">Product Inquiry</a></li>
+          <li><a href="https://www.facebook.com/Wexham.Med" target="_blank">Facebook Page</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2017 Wexham Medical Resources. All rights reserved.</p>
+      <p style="font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.1em;">WEXHAM.PH</p>
+    </div>
+  </footer>
+</div>
+
+<!-- ══════════════════════════════════════════
+     PRODUCTS PAGE
+══════════════════════════════════════════ -->
+<div class="page" id="page-products">
+  <div class="page-hero">
+    <div class="breadcrumb">Home / Products</div>
+    <h1>Our Products</h1>
+    <p>A comprehensive range of surgical products — sutures, meshes, staplers, hemostats and more — sourced from certified manufacturers.</p>
+  </div>
+
+  <div class="products-layout">
+    <div class="sidebar">
+      <div class="sidebar-title">Browse by Category</div>
+
+      <div class="sidebar-cat">
+        <div class="sidebar-cat-header" onclick="toggleCat(this)">
+          Absorbable Sutures <span>▾</span>
+        </div>
+        <div class="sidebar-subitems open">
+          <span class="sidebar-subcat" onclick="filterProducts('SOLUS 910')">SOLUS 910</span>
+          <span class="sidebar-subcat" onclick="filterProducts('SOLUS 910 AM+')">SOLUS 910 AM+</span>
+          <span class="sidebar-subcat" onclick="filterProducts('SOLUS 910 Swift')">SOLUS 910 Swift</span>
+          <span class="sidebar-subcat" onclick="filterProducts('MONOLUS')">MONOLUS</span>
+          <span class="sidebar-subcat" onclick="filterProducts('MASS')">MASS</span>
+          <span class="sidebar-subcat" onclick="filterProducts('LOGUT')">LOGUT</span>
+        </div>
+      </div>
+
+      <div class="sidebar-cat">
+        <div class="sidebar-cat-header" onclick="toggleCat(this)">
+          Non-Absorbable Sutures <span>▾</span>
+        </div>
+        <div class="sidebar-subitems">
+          <span class="sidebar-subcat" onclick="filterProducts('PROLUS')">PROLUS</span>
+          <span class="sidebar-subcat" onclick="filterProducts('PROLUS Cardiovascular')">PROLUS Cardiovascular</span>
+          <span class="sidebar-subcat" onclick="filterProducts('NYLUS')">NYLUS</span>
+          <span class="sidebar-subcat" onclick="filterProducts('SILKUS')">SILKUS</span>
+        </div>
+      </div>
+
+      <div class="sidebar-cat">
+        <div class="sidebar-cat-header" onclick="toggleCat(this)">
+          Surgical Mesh <span>▾</span>
+        </div>
+        <div class="sidebar-subitems">
+          <span class="sidebar-subcat" onclick="filterProducts('PROLUS Mesh')">PROLUS Mesh</span>
+          <span class="sidebar-subcat" onclick="filterProducts('PROLUS Ultra Lite Mesh')">PROLUS Ultra Lite Mesh</span>
+          <span class="sidebar-subcat" onclick="filterProducts('PRO-AB Mesh')">PRO-AB Mesh</span>
+          <span class="sidebar-subcat" onclick="filterProducts('HERNIA Kit')">HERNIA Kit</span>
+        </div>
+      </div>
+
+      <div class="sidebar-cat">
+        <div class="sidebar-cat-header" onclick="toggleCat(this)">
+          Bladeless Trocar <span>▾</span>
+        </div>
+        <div class="sidebar-subitems">
+          <span class="sidebar-subcat" onclick="filterProducts('PROLAP Bladeless Trocars')">PROLAP Bladeless Trocars</span>
+        </div>
+      </div>
+
+      <div class="sidebar-cat">
+        <div class="sidebar-cat-header" onclick="toggleCat(this)">
+          Surgical Staplers <span>▾</span>
+        </div>
+        <div class="sidebar-subitems">
+          <span class="sidebar-subcat" onclick="filterProducts('PROSEC Skin Stapler')">PROSEC Skin Stapler</span>
+          <span class="sidebar-subcat" onclick="filterProducts('PROSEC Circular Stapler')">PROSEC Circular Stapler</span>
+        </div>
+      </div>
+
+      <div class="sidebar-cat">
+        <div class="sidebar-cat-header" onclick="toggleCat(this)">
+          Hemostats <span>▾</span>
+        </div>
+        <div class="sidebar-subitems">
+          <span class="sidebar-subcat" onclick="filterProducts('HEMOLUS Absorbable Hemostat')">HEMOLUS</span>
+          <span class="sidebar-subcat" onclick="filterProducts('BONE WAX')">BONE WAX</span>
+        </div>
+      </div>
+
+      <div class="sidebar-cat">
+        <div class="sidebar-cat-header" onclick="toggleCat(this)">
+          Clips & Appliers <span>▾</span>
+        </div>
+        <div class="sidebar-subitems">
+          <span class="sidebar-subcat" onclick="filterProducts('HEMOSEC Titanium Clips')">HEMOSEC Titanium Clips</span>
+          <span class="sidebar-subcat" onclick="filterProducts('HEMOSEC Laparoscopic Applier')">HEMOSEC Laparoscopic Applier</span>
+          <span class="sidebar-subcat" onclick="filterProducts('HEMOSEC Open Appliers')">HEMOSEC Open Appliers</span>
+        </div>
+      </div>
+
+      <div style="margin-top:32px;padding-top:24px;border-top:1px solid rgba(200,150,12,0.1);">
+        <button class="btn-primary" onclick="filterProducts('all')" style="width:100%;font-size:11px;padding:10px 16px;">View All Products</button>
+      </div>
+    </div>
+
+    <div class="products-main">
+      <div class="products-toolbar">
+        <div class="products-count">Showing <strong id="prod-count">20</strong> products</div>
+        <span id="active-filter" style="font-size:12px;color:var(--accent);font-family:'DM Mono',monospace;"></span>
+      </div>
+      <div class="all-products-grid" id="products-grid">
+        <!-- populated by JS -->
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="nav-logo-icon" style="width:48px;height:48px;font-size:26px;">W</div>
+        <p>Wexham Medical Resources, Inc. — providing high-quality surgical products to Filipino healthcare institutions.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a onclick="navigate('home')">Home</a></li>
+          <li><a onclick="navigate('products')">Products</a></li>
+          <li><a onclick="navigate('brands')">Brands</a></li>
+          <li><a onclick="navigate('careers')">Careers</a></li>
+          <li><a onclick="navigate('contact')">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Customer Care</h4>
+        <ul>
+          <li><a onclick="navigate('about')">About Wexham</a></li>
+          <li><a onclick="navigate('where-to-order')">Where to Order</a></li>
+          <li><a onclick="navigate('product-inquiry')">Product Inquiry</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a>(+632) 8652 5755</a></li>
+          <li><a>Unit 46, Parc House I</a></li>
+          <li><a>227 EDSA, Mandaluyong</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2017 Wexham Medical Resources. All rights reserved.</p>
+    </div>
+  </footer>
+</div>
+
+<!-- ══════════════════════════════════════════
+     PRODUCT DETAIL PAGES (template, filled by JS)
+══════════════════════════════════════════ -->
+<div class="page" id="page-product-detail">
+  <div class="page-hero" style="padding:48px 64px;">
+    <button class="back-btn" onclick="navigate('products')">← Back to Products</button>
+    <h1 id="detail-title">Product Name</h1>
+    <p id="detail-subtitle">Category</p>
+  </div>
+
+  <div class="product-detail">
+    <div class="product-image-area">
+      <div class="product-placeholder" id="detail-icon">🏥</div>
+    </div>
+    <div class="product-info">
+      <p class="product-subtitle" id="detail-composition"></p>
+      <div class="product-divider"></div>
+      <p class="product-desc" id="detail-desc"></p>
+
+      <div class="product-specs">
+        <h4>Product Specifications</h4>
+        <div id="detail-specs"></div>
+      </div>
+
+      <div class="product-actions">
+        <button class="btn-primary" onclick="openInquiry()">Inquire Now</button>
+        <button class="btn-secondary" onclick="navigate('contact')">Contact Sales</button>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-bottom" style="border-top:1px solid rgba(200,150,12,0.1);padding:32px 64px;display:flex;justify-content:space-between;">
+      <p style="color:rgba(248,246,241,0.3);font-size:12px;">© 2017 Wexham Medical Resources. All rights reserved.</p>
+      <button class="btn-secondary" onclick="navigate('products')" style="font-size:11px;padding:8px 20px;">← All Products</button>
+    </div>
+  </footer>
+</div>
+
+<!-- ══════════════════════════════════════════
+     BRANDS PAGE
+══════════════════════════════════════════ -->
+<div class="page" id="page-brands">
+  <div class="page-hero">
+    <div class="breadcrumb">Home / Brands</div>
+    <h1>Our Brands</h1>
+    <p>A portfolio of trusted surgical brands manufactured to international quality standards.</p>
+  </div>
+
+  <div class="brands-intro">
+    <div>
+      <div class="section-tag">Why Our Brands</div>
+      <h2 class="section-title">Quality Built on <em>Science</em></h2>
+    </div>
+    <div>
+      <p>Each Wexham brand represents a specific category of surgical excellence. From absorbable sutures to hemostats and mesh repairs, our brands are developed to meet the exacting demands of surgical practice in the Philippines and beyond.</p>
+      <p style="margin-top:16px;">Our manufacturing partners at Lotus Surgicals maintain ISO-certified production facilities, ensuring that every product that carries a Wexham brand name meets the highest quality benchmarks.</p>
+    </div>
+  </div>
+
+  <div class="brands-grid">
+    <div class="brand-card" onclick="navigate('products')">
+      <div class="brand-card-tag">Absorbable Sutures</div>
+      <div class="brand-card-name">SOLUS 910</div>
+      <div class="brand-card-desc">Braided Coated Poly(Glycolide-co-L-lactide) — the flagship absorbable suture line with superior knot security, smooth passage through tissue, and predictable absorption profile.</div>
+    </div>
+    <div class="brand-card" onclick="navigate('products')">
+      <div class="brand-card-tag">Absorbable Sutures</div>
+      <div class="brand-card-name">MONOLUS</div>
+      <div class="brand-card-desc">Poly(Glycolide-co-caprolactone) [Poliglecaprone 25] — a monofilament absorbable suture known for excellent handling characteristics and minimal tissue drag.</div>
+    </div>
+    <div class="brand-card" onclick="navigate('products')">
+      <div class="brand-card-tag">Absorbable Sutures</div>
+      <div class="brand-card-name">MASS</div>
+      <div class="brand-card-desc">Poly(P-dioxanone) monofilament suture — ideal for procedures requiring extended wound support with a predictable absorption timeline.</div>
+    </div>
+    <div class="brand-card" onclick="navigate('products')">
+      <div class="brand-card-tag">Absorbable Sutures</div>
+      <div class="brand-card-name">LOGUT</div>
+      <div class="brand-card-desc">Chromic and Plain Catgut — natural absorbable sutures available in chromic and plain configurations for various wound closure needs.</div>
+    </div>
+    <div class="brand-card" onclick="navigate('products')">
+      <div class="brand-card-tag">Non-Absorbable Sutures</div>
+      <div class="brand-card-name">PROLUS</div>
+      <div class="brand-card-desc">Blue Monofilament Polypropylene — a trusted non-absorbable suture with consistent tensile strength and minimal tissue reaction for long-term approximation.</div>
+    </div>
+    <div class="brand-card" onclick="navigate('products')">
+      <div class="brand-card-tag">Non-Absorbable Sutures</div>
+      <div class="brand-card-name">SILKUS</div>
+      <div class="brand-card-desc">Black Braided Silk — the classic braided silk suture offering excellent knot security and handling for general surgical use.</div>
+    </div>
+    <div class="brand-card" onclick="navigate('products')">
+      <div class="brand-card-tag">Non-Absorbable Sutures</div>
+      <div class="brand-card-name">NYLUS</div>
+      <div class="brand-card-desc">Black Monofilament Polyamide — a versatile nylon suture for skin closure and other applications requiring long-term non-absorbable support.</div>
+    </div>
+    <div class="brand-card" onclick="navigate('products')">
+      <div class="brand-card-tag">Hemostats</div>
+      <div class="brand-card-name">HEMOLUS</div>
+      <div class="brand-card-desc">Oxidized Regenerated Cellulose — the trusted absorbable hemostat for effective control of bleeding during surgical procedures.</div>
+    </div>
+    <div class="brand-card" onclick="navigate('products')">
+      <div class="brand-card-tag">Clips & Appliers</div>
+      <div class="brand-card-name">HEMOSEC</div>
+      <div class="brand-card-desc">Titanium clips and precision appliers — available in laparoscopic and open configurations for reliable vessel ligation and tissue management.</div>
+    </div>
+    <div class="brand-card" onclick="navigate('products')">
+      <div class="brand-card-tag">Bladeless Trocar</div>
+      <div class="brand-card-name">PROLAP</div>
+      <div class="brand-card-desc">Bladeless Trocar system for minimally invasive surgery — single-use instruments that create working tunnels while maintaining pneumoperitoneum.</div>
+    </div>
+    <div class="brand-card" onclick="navigate('products')">
+      <div class="brand-card-tag">Surgical Staplers</div>
+      <div class="brand-card-name">PROSEC</div>
+      <div class="brand-card-desc">Surgical stapling solutions including skin staplers and circular staplers for efficient, reliable wound closure across various procedures.</div>
+    </div>
+    <div class="brand-card" onclick="navigate('products')">
+      <div class="brand-card-tag">Surgical Mesh</div>
+      <div class="brand-card-name">PROLUS MESH</div>
+      <div class="brand-card-desc">Polypropylene and partially absorbable mesh systems for hernia repair and abdominal wall reinforcement, in standard and ultra-lite configurations.</div>
+    </div>
+  </div>
+
+  <div class="lotus-section">
+    <div>
+      <div class="section-tag" style="color:var(--accent);font-size:11px;letter-spacing:0.2em;text-transform:uppercase;margin-bottom:12px;">Manufacturing Partner</div>
+      <h3>Lotus Surgicals</h3>
+      <p>Our manufacturing partnership with Lotus Surgicals ensures that all Wexham-branded products are produced in state-of-the-art, ISO-certified facilities with rigorous quality controls at every stage.</p>
+      <div style="margin-top:32px;">
+        <a href="http://www.lotus-surgicals.com" target="_blank" style="color:var(--accent);font-size:13px;letter-spacing:0.1em;text-transform:uppercase;font-weight:500;">Visit Lotus Surgicals →</a>
+      </div>
+    </div>
+    <div class="lotus-img-area">
+      🏭
+      <div style="margin-top:16px;font-family:'Cormorant Garamond',serif;font-size:28px;color:rgba(248,246,241,0.6);font-style:italic;">Lotus Surgicals</div>
+      <div style="font-size:12px;color:rgba(248,246,241,0.3);letter-spacing:0.1em;text-transform:uppercase;margin-top:8px;">Manufacturing Facility</div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-bottom" style="padding:32px 64px;display:flex;justify-content:space-between;">
+      <p style="color:rgba(248,246,241,0.3);font-size:12px;">© 2017 Wexham Medical Resources. All rights reserved.</p>
+      <p style="font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.1em;color:rgba(248,246,241,0.2);">WEXHAM.PH</p>
+    </div>
+  </footer>
+</div>
+
+<!-- ══════════════════════════════════════════
+     CAREERS PAGE
+══════════════════════════════════════════ -->
+<div class="page" id="page-careers">
+  <div class="page-hero">
+    <div class="breadcrumb">Home / Careers</div>
+    <div class="careers-hero-content">
+      <h1>Join Our Team</h1>
+      <p>Help us bring world-class surgical products to Filipino healthcare. We're looking for passionate people to grow with us.</p>
+    </div>
+  </div>
+
+  <div class="careers-body">
+    <div class="careers-why">
+      <h2>Why Work at Wexham</h2>
+      <div class="value-item">
+        <div class="value-icon">🎯</div>
+        <div class="value-text">
+          <h4>Mission-Driven Work</h4>
+          <p>Every product we place in a surgeon's hands contributes to better patient outcomes across the Philippines. Your work here matters.</p>
+        </div>
+      </div>
+      <div class="value-item">
+        <div class="value-icon">🌱</div>
+        <div class="value-text">
+          <h4>Growth Opportunities</h4>
+          <p>As a growing company in the medical devices sector, we offer real opportunities for career advancement and professional development.</p>
+        </div>
+      </div>
+      <div class="value-item">
+        <div class="value-icon">🤝</div>
+        <div class="value-text">
+          <h4>Collaborative Culture</h4>
+          <p>We work as a team — small enough that every person makes a difference, large enough to have resources and structure.</p>
+        </div>
+      </div>
+      <div class="value-item">
+        <div class="value-icon">📈</div>
+        <div class="value-text">
+          <h4>Competitive Compensation</h4>
+          <p>We offer competitive salaries and benefits packages aligned with industry standards in the medical devices sector.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="job-listings">
+      <h2>Open Positions</h2>
+
+      <div class="job-card" onclick="openInquiry()">
+        <div class="job-dept">Sales & Marketing</div>
+        <div class="job-title">Medical Sales Representative</div>
+        <div class="job-meta">
+          <span>📍 Metro Manila</span>
+          <span>💼 Full-time</span>
+        </div>
+        <div class="job-type-badge">Open</div>
+      </div>
+
+      <div class="job-card" onclick="openInquiry()">
+        <div class="job-dept">Regulatory Affairs</div>
+        <div class="job-title">Regulatory Affairs Specialist</div>
+        <div class="job-meta">
+          <span>📍 Mandaluyong</span>
+          <span>💼 Full-time</span>
+        </div>
+        <div class="job-type-badge">Open</div>
+      </div>
+
+      <div class="job-card" onclick="openInquiry()">
+        <div class="job-dept">Operations</div>
+        <div class="job-title">Warehouse & Logistics Officer</div>
+        <div class="job-meta">
+          <span>📍 Mandaluyong</span>
+          <span>💼 Full-time</span>
+        </div>
+        <div class="job-type-badge">Open</div>
+      </div>
+
+      <div class="job-card" onclick="openInquiry()">
+        <div class="job-dept">Customer Relations</div>
+        <div class="job-title">Customer Relations Associate</div>
+        <div class="job-meta">
+          <span>📍 Mandaluyong</span>
+          <span>💼 Full-time</span>
+        </div>
+        <div class="job-type-badge">Open</div>
+      </div>
+
+      <div class="job-card" onclick="openInquiry()">
+        <div class="job-dept">Finance</div>
+        <div class="job-title">Finance and Accounting Associate</div>
+        <div class="job-meta">
+          <span>📍 Mandaluyong</span>
+          <span>💼 Full-time</span>
+        </div>
+        <div class="job-type-badge">Open</div>
+      </div>
+
+      <p style="font-size:13px;color:var(--gray);margin-top:24px;line-height:1.65;">Don't see the right role? Send your CV to our team — we keep strong applicants on file and reach out when positions open up.</p>
+    </div>
+  </div>
+
+  <div class="careers-cta">
+    <h3>Ready to Apply?</h3>
+    <p>Send your resume and a brief introduction to our team.</p>
+    <button class="btn-primary" onclick="navigate('contact')">Get in Touch</button>
+  </div>
+
+  <footer>
+    <div class="footer-bottom" style="padding:32px 64px;display:flex;justify-content:space-between;">
+      <p style="color:rgba(248,246,241,0.3);font-size:12px;">© 2017 Wexham Medical Resources. All rights reserved.</p>
+    </div>
+  </footer>
+</div>
+
+<!-- ══════════════════════════════════════════
+     CONTACT PAGE
+══════════════════════════════════════════ -->
+<div class="page" id="page-contact">
+  <div class="page-hero">
+    <div class="breadcrumb">Home / Contact Us</div>
+    <h1>Contact Us</h1>
+    <p>Reach our team for product inquiries, orders, or general questions.</p>
+  </div>
+
+  <div class="contact-layout">
+    <div class="contact-info-side">
+      <h2>Let's Connect</h2>
+      <p>Whether you're a hospital procurement officer, a surgeon evaluating products, or a distributor — our team is ready to assist you.</p>
+
+      <div class="contact-detail">
+        <div class="contact-detail-icon">📞</div>
+        <div class="contact-detail-text">
+          <h4>Phone</h4>
+          <p>(+632) 8652 5755</p>
+        </div>
+      </div>
+
+      <div class="contact-detail">
+        <div class="contact-detail-icon">📍</div>
+        <div class="contact-detail-text">
+          <h4>Address</h4>
+          <p>Unit 46, Parc House I<br>227 EDSA Southbound<br>Mandaluyong, Philippines 1550</p>
+        </div>
+      </div>
+
+      <div class="contact-detail">
+        <div class="contact-detail-icon">🕐</div>
+        <div class="contact-detail-text">
+          <h4>Office Hours</h4>
+          <p>Monday – Friday<br>8:00 AM – 5:00 PM</p>
+        </div>
+      </div>
+
+      <div class="contact-detail">
+        <div class="contact-detail-icon">📘</div>
+        <div class="contact-detail-text">
+          <h4>Facebook</h4>
+          <p><a href="https://www.facebook.com/Wexham.Med" target="_blank" style="color:var(--accent);">facebook.com/Wexham.Med</a></p>
+        </div>
+      </div>
+
+      <div class="social-links">
+        <div class="social-link">📘</div>
+        <div class="social-link">📧</div>
+        <div class="social-link">📱</div>
+      </div>
+    </div>
+
+    <div class="contact-form-side">
+      <h3>Send Us a Message</h3>
+      <div class="form-row">
+        <div class="form-group">
+          <label>First Name</label>
+          <input type="text" placeholder="Juan">
+        </div>
+        <div class="form-group">
+          <label>Last Name</label>
+          <input type="text" placeholder="dela Cruz">
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Email Address</label>
+        <input type="email" placeholder="juan@hospital.com">
+      </div>
+      <div class="form-group">
+        <label>Phone Number</label>
+        <input type="tel" placeholder="+63 9XX XXX XXXX">
+      </div>
+      <div class="form-group">
+        <label>Institution / Organization</label>
+        <input type="text" placeholder="Hospital or clinic name">
+      </div>
+      <div class="form-group">
+        <label>Subject</label>
+        <select>
+          <option>Product Inquiry</option>
+          <option>Order / Procurement</option>
+          <option>Technical Support</option>
+          <option>Partnership / Distribution</option>
+          <option>Careers</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Message</label>
+        <textarea placeholder="Tell us how we can help you…"></textarea>
+      </div>
+      <p class="form-note">By submitting, you agree to be contacted by our team regarding your inquiry. We typically respond within 1–2 business days.</p>
+      <button class="btn-primary" onclick="showToast('✓ Message sent! We\'ll be in touch within 1–2 business days.')">Send Message</button>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-bottom" style="padding:32px 64px;display:flex;justify-content:space-between;">
+      <p style="color:rgba(248,246,241,0.3);font-size:12px;">© 2017 Wexham Medical Resources. All rights reserved.</p>
+    </div>
+  </footer>
+</div>
+
+<!-- ══════════════════════════════════════════
+     ABOUT / CUSTOMER CARE PAGES
+══════════════════════════════════════════ -->
+<div class="page" id="page-about">
+  <div class="page-hero">
+    <div class="breadcrumb">Home / About Wexham</div>
+    <h1>About Wexham Medical Resources</h1>
+  </div>
+  <div class="about-layout">
+    <h2>Who We Are</h2>
+    <p>Wexham Medical Resources, Inc. is a Philippine-based company specializing in the importation, marketing, and distribution of high-quality surgical products. We serve hospitals, clinics, and healthcare institutions across the country with a product portfolio that spans sutures, surgical mesh, hemostats, staplers, clip appliers, and minimally invasive surgery tools.</p>
+    <p>Our products are sourced from world-class manufacturing partners, including Lotus Surgicals, whose ISO-certified facilities ensure every item meets international quality and safety standards. We are committed to improving surgical outcomes for Filipino patients by making premium surgical supplies accessible and affordable.</p>
+    <div class="about-highlight">
+      <blockquote>Providing world-class surgical products to Filipino healthcare — that is our mission, our commitment, and our daily purpose.</blockquote>
+    </div>
+    <h2>Our Commitment</h2>
+    <p>At Wexham, we believe that every surgeon deserves the best tools, and every patient deserves the safest care. That's why we work tirelessly to maintain our product quality, expand our range, and provide responsive support to the healthcare professionals who rely on us.</p>
+    <p>We are headquartered in Mandaluyong, Philippines, serving the entire country with a team of dedicated medical sales and customer care professionals.</p>
+    <div style="margin-top:48px;">
+      <button class="btn-primary" onclick="navigate('contact')">Contact Our Team</button>
+    </div>
+  </div>
+  <footer>
+    <div class="footer-bottom" style="padding:32px 64px;display:flex;justify-content:space-between;">
+      <p style="color:rgba(248,246,241,0.3);font-size:12px;">© 2017 Wexham Medical Resources. All rights reserved.</p>
+    </div>
+  </footer>
+</div>
+
+<div class="page" id="page-where-to-order">
+  <div class="page-hero">
+    <div class="breadcrumb">Home / Customer Care / Where to Order</div>
+    <h1>Where to Order</h1>
+    <p>Find out how to procure Wexham products for your hospital or clinic.</p>
+  </div>
+  <div class="about-layout">
+    <h2>How to Order</h2>
+    <p>Wexham Medical Resources, Inc. accepts orders through multiple channels. You can reach our sales team directly by phone, submit an inquiry through our website, or connect with us on our official Facebook page.</p>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;margin:48px 0;">
+      <div style="background:var(--navy);padding:40px;color:white;">
+        <div style="font-size:32px;margin-bottom:16px;">📞</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:24px;margin-bottom:8px;color:white;">By Phone</div>
+        <div style="color:rgba(248,246,241,0.6);font-size:14px;line-height:1.7;">Call us at <strong style="color:var(--accent)">(+632) 8652 5755</strong> during office hours (Mon–Fri, 8AM–5PM) to speak directly with our sales team.</div>
+      </div>
+      <div style="background:var(--navy);padding:40px;color:white;">
+        <div style="font-size:32px;margin-bottom:16px;">🌐</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:24px;margin-bottom:8px;color:white;">Online Inquiry</div>
+        <div style="color:rgba(248,246,241,0.6);font-size:14px;line-height:1.7;">Submit a product inquiry through our website. Our team will respond within 1–2 business days with pricing and availability information.</div>
+      </div>
+      <div style="background:var(--navy);padding:40px;color:white;">
+        <div style="font-size:32px;margin-bottom:16px;">📘</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:24px;margin-bottom:8px;color:white;">Facebook</div>
+        <div style="color:rgba(248,246,241,0.6);font-size:14px;line-height:1.7;">Follow and message us on Facebook at <strong style="color:var(--accent)">facebook.com/Wexham.Med</strong> for updates, promotions, and quick inquiries.</div>
+      </div>
+      <div style="background:var(--navy);padding:40px;color:white;">
+        <div style="font-size:32px;margin-bottom:16px;">📍</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:24px;margin-bottom:8px;color:white;">Visit Us</div>
+        <div style="color:rgba(248,246,241,0.6);font-size:14px;line-height:1.7;">Unit 46, Parc House I, 227 EDSA Southbound, Mandaluyong, Philippines 1550. By appointment preferred.</div>
+      </div>
+    </div>
+
+    <div style="margin-top:16px;">
+      <button class="btn-primary" onclick="navigate('contact')">Submit an Inquiry</button>
+    </div>
+  </div>
+  <footer>
+    <div class="footer-bottom" style="padding:32px 64px;display:flex;justify-content:space-between;">
+      <p style="color:rgba(248,246,241,0.3);font-size:12px;">© 2017 Wexham Medical Resources. All rights reserved.</p>
+    </div>
+  </footer>
+</div>
+
+<div class="page" id="page-product-inquiry">
+  <div class="page-hero">
+    <div class="breadcrumb">Home / Customer Care / Product Inquiry</div>
+    <h1>Inquiry About a Product</h1>
+    <p>Have questions about a product you've purchased or are considering?</p>
+  </div>
+  <div class="about-layout">
+    <h2>We're Here to Help</h2>
+    <p>Whether you have questions about a product you've already purchased, need technical support, or want to verify product specifications before procurement — our customer care team is ready to assist you.</p>
+    <div class="form-group" style="margin-top:32px;">
+      <label>Your Name</label>
+      <input type="text" placeholder="Full name">
+    </div>
+    <div class="form-group">
+      <label>Contact Number</label>
+      <input type="tel" placeholder="+63 9XX XXX XXXX">
+    </div>
+    <div class="form-group">
+      <label>Product Name / Code</label>
+      <input type="text" placeholder="e.g. SOLUS 910, HEMOLUS">
+    </div>
+    <div class="form-group">
+      <label>Nature of Inquiry</label>
+      <select>
+        <option>Technical / Usage Question</option>
+        <option>Product Defect / Complaint</option>
+        <option>Pricing Inquiry</option>
+        <option>Availability Check</option>
+        <option>Documentation Request</option>
+        <option>Other</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label>Your Message</label>
+      <textarea placeholder="Describe your inquiry in detail…"></textarea>
+    </div>
+    <button class="btn-primary" onclick="showToast('✓ Inquiry submitted! Our team will follow up shortly.')">Submit Inquiry</button>
+  </div>
+  <footer>
+    <div class="footer-bottom" style="padding:32px 64px;display:flex;justify-content:space-between;">
+      <p style="color:rgba(248,246,241,0.3);font-size:12px;">© 2017 Wexham Medical Resources. All rights reserved.</p>
+    </div>
+  </footer>
+</div>
+
+<!-- INQUIRY MODAL -->
+<div class="modal-overlay" id="inquiry-modal" onclick="closeModal(event)">
+  <div class="modal">
+    <div class="modal-header">
+      <h3>Product Inquiry</h3>
+      <button class="modal-close" onclick="document.getElementById('inquiry-modal').classList.remove('open')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="form-group">
+        <label>Full Name</label>
+        <input type="text" placeholder="Your name">
+      </div>
+      <div class="form-group">
+        <label>Email</label>
+        <input type="email" placeholder="your@email.com">
+      </div>
+      <div class="form-group">
+        <label>Phone</label>
+        <input type="tel" placeholder="+63 9XX XXX XXXX">
+      </div>
+      <div class="form-group">
+        <label>Institution</label>
+        <input type="text" placeholder="Hospital / Clinic name">
+      </div>
+      <div class="form-group">
+        <label>Message</label>
+        <textarea placeholder="Tell us about your requirements…"></textarea>
+      </div>
+      <button class="btn-primary" style="width:100%;" onclick="showToast('✓ Inquiry submitted! We\'ll contact you soon.');document.getElementById('inquiry-modal').classList.remove('open');">Submit Inquiry</button>
+    </div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<script>
+// ── DATA ──
+const products = [
+  { id:'solus910', name:'SOLUS 910', cat:'Absorbable Sutures', icon:'🧵', composition:'Braided Coated Poly(Glycolide-co-L-lactide) [Polyglactin-910]', desc:'SOLUS 910 is our flagship absorbable braided suture. It provides consistent wound support throughout the critical healing period with a predictable absorption profile. Its smooth coating ensures easy passage through tissue and excellent knot security, making it suitable for a wide range of surgical procedures.', specs:[{l:'Composition',v:'Poly(Glycolide-co-L-lactide) Polyglactin-910'},{l:'Construction',v:'Braided, Coated'},{l:'Color',v:'Violet / Undyed'},{l:'Absorption',v:'56–70 days'},{l:'Tensile Strength',v:'Retained 75% at 14 days'}] },
+  { id:'solus910am', name:'SOLUS 910 AM+', cat:'Absorbable Sutures', icon:'🧵', composition:'Braided with Antimicrobial (Chlorhexidine diacetate)', desc:'SOLUS 910 AM+ combines the trusted performance of SOLUS 910 with an antimicrobial agent to help reduce the risk of surgical site infection. It is indicated for all soft-tissue approximation where antimicrobial properties are desirable.', specs:[{l:'Composition',v:'Polyglactin-910 + Chlorhexidine diacetate'},{l:'Construction',v:'Braided, Coated'},{l:'Antimicrobial',v:'Chlorhexidine diacetate'},{l:'Absorption',v:'56–70 days'}] },
+  { id:'solus910swift', name:'SOLUS 910 Swift', cat:'Absorbable Sutures', icon:'🧵', composition:'Braided Coated Short-term Poly(Glycolide-co-L-lactide)', desc:'SOLUS 910 Swift is designed for procedures requiring short-term wound support. It provides reliable approximation for superficial tissue and mucous membrane closure where rapid absorption is desired.', specs:[{l:'Composition',v:'Polyglactin-910 (Short-term)'},{l:'Construction',v:'Braided, Coated'},{l:'Absorption',v:'42 days'},{l:'Tensile Strength',v:'50% at 10 days'}] },
+  { id:'monolus', name:'MONOLUS', cat:'Absorbable Sutures', icon:'🧵', composition:'Poly(Glycolide-co-caprolactone) [Poliglecaprone 25]', desc:'MONOLUS is a synthetic absorbable monofilament suture made from Poliglecaprone 25. It exhibits excellent handling characteristics, smooth passage through tissue, and predictable absorption, making it ideal for subcuticular skin closure and soft-tissue approximation.', specs:[{l:'Composition',v:'Poliglecaprone 25'},{l:'Construction',v:'Monofilament'},{l:'Color',v:'Undyed / Clear'},{l:'Absorption',v:'91–119 days'}] },
+  { id:'mass', name:'MASS', cat:'Absorbable Sutures', icon:'🧵', composition:'Poly(P-dioxanone)', desc:'MASS is a monofilament absorbable suture made from Poly(P-dioxanone). It offers extended wound support over a prolonged period, making it suitable for procedures where tissue approximation must be maintained throughout the healing process.', specs:[{l:'Composition',v:'Poly(P-dioxanone)'},{l:'Construction',v:'Monofilament'},{l:'Absorption',v:'180 days'},{l:'Tensile Strength',v:'70% at 4 weeks'}] },
+  { id:'logut', name:'LOGUT', cat:'Absorbable Sutures', icon:'🧵', composition:'Chromic and Plain Catgut', desc:'LOGUT is a natural absorbable suture available in both chromic and plain catgut configurations. Suitable for ligation and soft tissue approximation, particularly in gynecological and urological procedures where rapid absorption is acceptable.', specs:[{l:'Composition',v:'Purified Collagen (Intestine)'},{l:'Types',v:'Plain and Chromic'},{l:'Absorption',v:'70 days (Plain) / 90 days (Chromic)'}] },
+  { id:'prolus', name:'PROLUS', cat:'Non-Absorbable Sutures', icon:'🔗', composition:'Blue Monofilament Polypropylene', desc:'PROLUS is a non-absorbable polypropylene monofilament suture. Its inert formulation causes minimal tissue reaction and it maintains tensile strength indefinitely in tissue. Ideal for cardiovascular, ophthalmic, and skin closure applications.', specs:[{l:'Composition',v:'Isotactic Crystalline Stereoisomer of Polypropylene'},{l:'Construction',v:'Monofilament'},{l:'Color',v:'Blue'},{l:'Absorption',v:'Non-absorbable'}] },
+  { id:'prolus-cardiovascular', name:'PROLUS Cardiovascular', cat:'Non-Absorbable Sutures', icon:'🔗', composition:'Blue Monofilament Polypropylene (Cardiovascular Grade)', desc:'PROLUS Cardiovascular is a specialized polypropylene suture designed for cardiovascular surgery. It provides the smoothness, pliability, and non-reactivity required for vascular anastomosis and cardiac procedures.', specs:[{l:'Composition',v:'Polypropylene (Cardiovascular Grade)'},{l:'Construction',v:'Monofilament'},{l:'Color',v:'Blue'},{l:'Application',v:'Cardiovascular Surgery'}] },
+  { id:'nylus', name:'NYLUS', cat:'Non-Absorbable Sutures', icon:'🔗', composition:'Black Monofilament Polyamide (Nylon)', desc:'NYLUS is a non-absorbable monofilament nylon suture. Its smooth surface passes easily through tissue and it provides consistent tensile strength. Widely used for skin closure, ophthalmic procedures, and nerve repair.', specs:[{l:'Composition',v:'Polyamide 6 / Polyamide 6,6'},{l:'Construction',v:'Monofilament'},{l:'Color',v:'Black / Clear'},{l:'Absorption',v:'Non-absorbable'}] },
+  { id:'silkus', name:'SILKUS', cat:'Non-Absorbable Sutures', icon:'🔗', composition:'Black Braided Silk', desc:'SILKUS is a braided natural silk suture that provides excellent handling characteristics, superior knot security, and ease of use. It is suitable for ligation of blood vessels and approximation of soft tissue in general surgery.', specs:[{l:'Composition',v:'Bombyx Mori Silk'},{l:'Construction',v:'Braided'},{l:'Color',v:'Black'},{l:'Coating',v:'Wax or Silicone'}] },
+  { id:'prolus-mesh', name:'PROLUS Mesh', cat:'Surgical Mesh', icon:'🏥', composition:'Polypropylene Surgical Mesh', desc:'PROLUS Mesh is a sturdy polypropylene prosthesis designed to reinforce the abdominal wall. It can be placed via celioscopy or laparotomy and is available in various sizes. The knitted structure provides strength while allowing tissue ingrowth for lasting hernia repair.', specs:[{l:'Material',v:'Polypropylene'},{l:'Structure',v:'Knitted'},{l:'Weight',v:'Standard (80–100 g/m²)'},{l:'Applications',v:'Inguinal, Ventral Hernia Repair'}] },
+  { id:'prolus-ultra-lite', name:'PROLUS Ultra Lite Mesh', cat:'Surgical Mesh', icon:'🏥', composition:'Lightweight Polypropylene Mesh', desc:'PROLUS Ultra Lite is a lightweight polypropylene mesh designed for improved patient comfort with reduced foreign body sensation. Ideal for inguinal and incisional hernia repair, particularly in laparoscopic approaches.', specs:[{l:'Material',v:'Polypropylene'},{l:'Weight',v:'Ultra Lite (< 50 g/m²)'},{l:'Pore Size',v:'Large'},{l:'Applications',v:'Laparoscopic Hernia Repair'}] },
+  { id:'pro-ab-mesh', name:'PRO-AB Partially Absorbable Mesh', cat:'Surgical Mesh', icon:'🏥', composition:'Partially Absorbable Light Weight Mesh', desc:'PRO-AB is a partially absorbable mesh combining polypropylene for permanent support with an absorbable component that is gradually resorbed, reducing long-term foreign body load while maintaining adequate reinforcement.', specs:[{l:'Materials',v:'Polypropylene + Absorbable Polymer'},{l:'Weight',v:'Light Weight'},{l:'Absorption',v:'Partial (absorbable component)'},{l:'Applications',v:'Hernia Repair'}] },
+  { id:'hernia-kit', name:'HERNIA Kit', cat:'Surgical Mesh', icon:'🏥', composition:'Complete Inguinal Hernia Repair Package', desc:'The HERNIA Kit is an end-to-end economical package for carrying out inguinal hernia repair surgery. It includes the essential components needed for a complete procedure, offering convenience, cost-efficiency, and quality assurance in a single package.', specs:[{l:'Contents',v:'Mesh + Sutures + Accessories'},{l:'Procedure',v:'Inguinal Hernia Repair'},{l:'Type',v:'Single-use Kit'}] },
+  { id:'prolap', name:'PROLAP Bladeless Trocars', cat:'Bladeless Trocar', icon:'🔬', composition:'Single-use Bladeless Trocar for MIS', desc:'PROLAP Bladeless Trocar is a single-use instrument for minimally invasive surgery. It punctures the abdominal wall by dilating rather than cutting, reducing vascular and nerve damage risk. It creates a working tunnel and maintains pneumoperitoneum during laparoscopic procedures.', specs:[{l:'Type',v:'Bladeless / Dilating'},{l:'Usage',v:'Single-use'},{l:'Application',v:'Laparoscopic Surgery'},{l:'Sizes',v:'5mm, 10mm, 12mm'}] },
+  { id:'prosec-skin', name:'PROSEC Skin Stapler', cat:'Surgical Staplers', icon:'⚙️', composition:'Disposable Surgical Skin Stapler', desc:'PROSEC Skin Stapler delivers precise, consistent staples for rapid skin closure. Its ergonomic design and consistent staple formation make it suitable for linear wound closure across a wide range of surgical procedures.', specs:[{l:'Type',v:'Skin Stapler'},{l:'Usage',v:'Single-use'},{l:'Staple Material',v:'Stainless Steel'},{l:'Capacities',v:'35 / 55 staples'}] },
+  { id:'prosec-circular', name:'PROSEC Circular Stapler', cat:'Surgical Staplers', icon:'⚙️', composition:'Circular Surgical Stapler', desc:'PROSEC Circular Stapler performs end-to-end, end-to-side, and side-to-side anastomoses in gastrointestinal surgery. Its precise staple formation ensures reliable, leak-resistant connections.', specs:[{l:'Type',v:'Circular Stapler'},{l:'Usage',v:'Single-use'},{l:'Sizes',v:'21mm, 25mm, 28mm, 31mm'},{l:'Applications',v:'GI Anastomosis'}] },
+  { id:'hemolus', name:'HEMOLUS Absorbable Hemostat', cat:'Hemostats', icon:'🩸', composition:'Oxidized Regenerated Cellulose (ORC)', desc:'HEMOLUS is an absorbable hemostat made from Oxidized Regenerated Cellulose. It effectively controls capillary, venous, and small arterial bleeding when conventional methods are impractical. HEMOLUS is fully absorbable and does not need to be removed after hemostasis is achieved.', specs:[{l:'Material',v:'Oxidized Regenerated Cellulose'},{l:'Form',v:'Knitted Fabric'},{l:'Absorption',v:'Fully absorbable in 7–14 days'},{l:'Mechanism',v:'Physical and biochemical hemostasis'}] },
+  { id:'bone-wax', name:'BONE WAX', cat:'Hemostats', icon:'🩸', composition:'Sterile Bone Wax (Beeswax)', desc:'BONE WAX is a sterile preparation used to control bleeding from bone surfaces during surgical procedures. It acts as a mechanical tampon and is used in neurosurgery, orthopedics, and cardiovascular surgery when bone bleeding requires control.', specs:[{l:'Material',v:'Beeswax + Isopropyl Palmitate'},{l:'Form',v:'Soft Wax'},{l:'Usage',v:'Bone Surface Hemostasis'}] },
+  { id:'hemosec', name:'HEMOSEC Laparoscopic Applier', cat:'Clips & Appliers', icon:'📎', composition:'Reusable Laparoscopic Clip Applier', desc:'The HEMOSEC Laparoscopic Clip Applier is a reusable instrument designed to deliver and close metallic ligating clips during laparoscopic surgery. It is compatible with the full range of HEMOSEC titanium clips and provides precise, reliable ligation of vessels and ducts.', specs:[{l:'Type',v:'Reusable'},{l:'Application',v:'Laparoscopic Surgery'},{l:'Compatible With',v:'HEMOSEC Titanium Clips'},{l:'Shaft Lengths',v:'330mm'}] },
+  { id:'hemosec-titanium', name:'HEMOSEC Titanium Clips', cat:'Clips & Appliers', icon:'📎', composition:'Titanium Ligating Clips', desc:'HEMOSEC Titanium Clips are precision-engineered ligating clips made from medical-grade titanium. They are radiolucent, non-magnetic, and provide reliable, permanent vessel occlusion in open and laparoscopic procedures.', specs:[{l:'Material',v:'Medical-grade Titanium'},{l:'Visibility',v:'Radiolucent (MRI compatible)'},{l:'Sizes',v:'Small, Medium, Large, XL'},{l:'Applications',v:'Vessel / Duct Ligation'}] },
+  { id:'hemosec-open', name:'HEMOSEC Open Appliers', cat:'Clips & Appliers', icon:'📎', composition:'Titanium Clip Applier for Open Surgery', desc:'HEMOSEC Open Appliers are designed for use in open surgical procedures. They deliver HEMOSEC titanium clips precisely and consistently, allowing reliable ligation in traditional open surgical approaches.', specs:[{l:'Type',v:'Reusable'},{l:'Application',v:'Open Surgery'},{l:'Compatible With',v:'HEMOSEC Titanium Clips'}] },
+];
+
+// ── NAVIGATION ──
+let currentPage = 'home';
+function navigate(page) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+
+  if (page.startsWith('product-')) {
+    const pid = page.replace('product-', '');
+    const prod = products.find(p => p.id === pid);
+    if (prod) {
+      showProductDetail(prod);
+      document.getElementById('page-product-detail').classList.add('active');
+    } else {
+      document.getElementById('page-products').classList.add('active');
+    }
+  } else {
+    const el = document.getElementById('page-' + page);
+    if (el) { el.classList.add('active'); }
+    else { document.getElementById('page-home').classList.add('active'); page = 'home'; }
+  }
+
+  const navLink = document.querySelector(`[data-page="${page}"]`);
+  if (navLink) navLink.classList.add('active');
+
+  window.scrollTo(0, 0);
+  currentPage = page;
+}
+
+function showProductDetail(prod) {
+  document.getElementById('detail-title').textContent = prod.name;
+  document.getElementById('detail-subtitle').textContent = prod.cat;
+  document.getElementById('detail-icon').textContent = prod.icon;
+  document.getElementById('detail-composition').textContent = prod.composition;
+  document.getElementById('detail-desc').textContent = prod.desc;
+  const specsEl = document.getElementById('detail-specs');
+  specsEl.innerHTML = prod.specs.map(s => `
+    <div class="spec-row">
+      <span class="spec-label">${s.l}</span>
+      <span class="spec-value">${s.v}</span>
+    </div>
+  `).join('');
+}
+
+// ── PRODUCTS GRID ──
+let currentFilter = 'all';
+function renderProducts(filter) {
+  const grid = document.getElementById('products-grid');
+  const filtered = filter === 'all' ? products : products.filter(p => p.name === filter || p.cat === filter);
+  document.getElementById('prod-count').textContent = filtered.length;
+  document.getElementById('active-filter').textContent = filter === 'all' ? '' : filter;
+  grid.innerHTML = filtered.map(p => `
+    <div class="prod-card" onclick="navigate('product-${p.id}')">
+      <div class="prod-cat-tag">${p.cat}</div>
+      <div class="prod-name">${p.name}</div>
+      <div class="prod-desc">${p.composition}</div>
+      <button class="prod-link">View Details</button>
+    </div>
+  `).join('');
+}
+
+function filterProducts(filter) {
+  currentFilter = filter;
+  renderProducts(filter);
+  document.querySelectorAll('.sidebar-subcat').forEach(s => {
+    s.classList.toggle('active', s.textContent.trim() === filter);
+  });
+}
+
+function toggleCat(header) {
+  const sub = header.nextElementSibling;
+  sub.classList.toggle('open');
+  const arrow = header.querySelector('span');
+  arrow.textContent = sub.classList.contains('open') ? '▴' : '▾';
+}
+
+// ── MODAL ──
+function openInquiry() {
+  document.getElementById('inquiry-modal').classList.add('open');
+}
+function closeModal(e) {
+  if (e.target === document.getElementById('inquiry-modal'))
+    document.getElementById('inquiry-modal').classList.remove('open');
+}
+
+// ── TOAST ──
+function showToast(msg) {
+  const toast = document.getElementById('toast');
+  toast.textContent = msg;
+  toast.style.display = 'block';
+  setTimeout(() => { toast.style.display = 'none'; }, 4000);
+}
+
+// ── INIT ──
+renderProducts('all');
+</script>
+</body>
+</html>
